@@ -4,11 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import common.Wrapper;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class ELearning_StepDefinitions {
+public class ELearning_StepDefinitions extends Wrapper{
 	
 static	WebDriver driver;
 
@@ -60,6 +61,20 @@ static	WebDriver driver;
 		driver.findElement(By.id("add_blog_blog_subtitle")).sendKeys(subtitle);
 		
 	}
+	
+	//Test Data from Excel
+	@Then("^Enter valid title in title text box$")
+	public void enter_valid_title_in_title_text_box() throws Throwable {
+		driver.findElement(By.id("add_blog_blog_name")).sendKeys(Wrapper.getDataFromExcel(1, 0));
+		
+	}                      
+	
+	//Test Data from Excel
+	@Then("^Enter valid text in sub title text box$")
+	public void enter_valid_text_in_sub_title_text_box() throws Throwable {
+		driver.findElement(By.id("add_blog_blog_subtitle")).sendKeys(Wrapper.getDataFromExcel(1, 1));
+	   
+	}
 
 	@Then("^click on save blog button$")
 	public void click_on_save_blog_button() throws Throwable {
@@ -82,6 +97,12 @@ static	WebDriver driver;
 	    driver.findElement(By.id("add_post_title")).sendKeys(tasktitle);
 	}
 
+	//test data from excel
+	@Then("^enter valid task in title text box$")
+	public void enter_valid_task_in_title_text_box() throws Throwable {
+		 driver.findElement(By.id("add_post_title")).sendKeys(Wrapper.getDataFromExcel(1, 2));
+	}
+	
 	@Then("^click on save1 button$")
 	public void click_on_save1_button() throws Throwable {
 		driver.findElement(By.id("add_post_save")).click();
@@ -104,6 +125,15 @@ static	WebDriver driver;
 		 driver.findElement(By.cssSelector("input[name=task_name]")).sendKeys(role);
 	    
 	}
+	
+	//test data from excel
+	@Then("^enter valid role in title text box$")
+	public void enter_valid_role_in_title_text_box() throws Throwable {
+		driver.findElement(By.cssSelector("input[name=task_name]")).sendKeys(Wrapper.getDataFromExcel(1, 3));
+	    
+	}
+
+
 	@Then("^click on save role button$")
 	public void click_on_save_role_button() throws Throwable {
 		driver.findElement(By.name("Submit")).click();
